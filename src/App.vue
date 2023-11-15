@@ -5,20 +5,20 @@
         <h1 class="text-light">Movies</h1>
           <div class="row">
               <MainComponent v-for="(movie,index) in store.movieList" :key="movie.id"
-              :imgMovie="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
-              :movieTitle="movie.title"
-              :movieRealTitle="movie.original_title"
-              :movieLanguage="movie.original_language"
-              :movieVote="movie.vote_average"/>
+              :image="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
+              :title="movie.title"
+              :realTitle="movie.original_title"
+              :language="movie.original_language"
+              :vote="movie.vote_average"/>
           </div>
           <h1 class="text-light">Series</h1>
           <div class="row">
               <MainComponent v-for="(series,index) in store.seriesList" :key="series.id"
-              :tvSeriesImg="'https://image.tmdb.org/t/p/w342'+series.poster_path"
-              :tvSeriesTitle="series.name"
-              :tvSeriesRealTitle="series.original_name"
-              :tvSeriesLanguage="series.original_language"
-              :tvSeriesVote="series.vote_average"/>
+              :image="'https://image.tmdb.org/t/p/w342'+series.poster_path"
+              :title="series.name"
+              :realTitle="series.original_name"
+              :language="series.original_language"
+              :vote="series.vote_average"/>
           </div>
       </div>
     </div>  
