@@ -1,30 +1,20 @@
 <template>
     <HeaderComponent/>
     <div class="container">
-      <div class="row">
-        <div class="col-12" v-for="(movie,index) in store.movieList" :key="movie.id">
-          {{ movie.title }}
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <h1>Series</h1>
-      <div class="row">
-        <div class="col-12" v-for="(series,index) in store.seriesList" :key="series.id">
-          {{ series.name }}
-        </div>
-      </div>
+      <MainComponent/>
     </div>
 </template>
 
 <script>
+import MainComponent from './components/MainComponent.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
 import {store} from './data/store'
 import axios from 'axios';
 export default {
   name: "App",
   components: {
-    HeaderComponent
+    HeaderComponent,
+    MainComponent
   },
   data(){
     
