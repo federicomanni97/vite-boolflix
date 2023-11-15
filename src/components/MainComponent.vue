@@ -1,21 +1,26 @@
 <template>
-    <h1>Movies</h1>
-    <div class="row">
-        <div class="col-12" v-for="(movie,index) in store.movieList" :key="movie.id">
-            {{ movie.title }}
-        </div>
-    </div>
-    <h1>Series</h1>
-    <div class="row">
-        <div class="col-12" v-for="(series,index) in store.seriesList" :key="series.id">
-        {{ series.name }}
-        </div>
-    </div>
+        <div class="col-3">
+            <img :src="imgMovie" class="w-100" alt="">
+            <div class="fs-4 text-center text-light pt-2">
+                <h5>{{ movieTitle }}</h5>
+                <h6>{{ movieRealTitle }}</h6>
+                <p>{{ movieLanguage }}</p>
+                <p>{{ movieVote }}</p>
+            </div>    
+        </div>             
+    
 </template>
 <script>
 import {store} from '../data/store'
 export default {
     name: 'MainComponent',
+    props: {
+        imgMovie: String,
+        movieTitle: String,
+        movieRealTitle:String,
+        movieLanguage: String,
+        movieVote: Number,
+    },
     data() {
         return {
             store

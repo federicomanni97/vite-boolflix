@@ -5,7 +5,7 @@
              <span class="input-group-text" id="basic-addon1">
                 <i class="fa-solid fa-magnifying-glass"></i>
              </span>
-             <input type="text" class="form-control" placeholder="Cerca il tuo film o il tuo genere" aria-label="Username" aria-describedby="basic-addon1" v-model.trim="filter">
+             <input type="text" class="form-control" placeholder="Cerca il tuo film o il tuo genere" aria-label="Username" aria-describedby="basic-addon1">
         </div>
     </div>
 </template>

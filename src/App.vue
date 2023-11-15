@@ -1,8 +1,18 @@
 <template>
     <HeaderComponent/>
-    <div class="container">
-      <MainComponent/>
-    </div>
+    <div class="bg-container">
+      <div class="container">
+        <h1 class="text-light">Movies</h1>
+          <div class="row">
+              <MainComponent v-for="(movie,index) in store.movieList" :key="movie.id"
+              :imgMovie="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
+              :movieTitle="movie.title"
+              :movieRealTitle="movie.original_title"
+              :movieLanguage="movie.original_language"
+              :movieVote="movie.vote_average"/>
+          </div>
+      </div>
+    </div>  
 </template>
 
 <script>
@@ -43,5 +53,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bg-container{
+  background-color: #434343;
+}
 
 </style>
