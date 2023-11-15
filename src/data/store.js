@@ -12,5 +12,12 @@ export const store = reactive({
     error: '', 
     loading: true,
     movieList: [],
-    seriesList: []
+    seriesList: [],
+    flags: {
+        en: '/public/images/en-flag.jpg', 
+        fr: '/public/images/france-flag.jpg',
+        ita: '/public/images/ita-flag.jpg',
+        esp: '/public/images/spain-flag.jpg',
+        ja: '/public/images/ja-flag.jpg'
+    }
 })

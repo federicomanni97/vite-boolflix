@@ -2,14 +2,15 @@
     <HeaderComponent/>
     <div class="bg-container">
       <div class="container">
-        <h1 class="text-light">Movies</h1>
+        <h1 class="text-light py-5">Movies</h1>
           <div class="row">
               <MainComponent v-for="(movie,index) in store.movieList" :key="movie.id"
               :image="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
               :title="movie.title"
               :realTitle="movie.original_title"
               :language="movie.original_language"
-              :vote="movie.vote_average"/>
+              :vote="movie.vote_average"
+              />
           </div>
           <h1 class="text-light">Series</h1>
           <div class="row">
@@ -53,7 +54,7 @@ export default {
         console.log(res.data.results);
         this.store.seriesList = res.data.results;
       })
-    }
+    },
   },
   created(){
     this.getMoviesAndSeries();
