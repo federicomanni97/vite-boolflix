@@ -11,6 +11,15 @@
               :movieLanguage="movie.original_language"
               :movieVote="movie.vote_average"/>
           </div>
+          <h1 class="text-light">Series</h1>
+          <div class="row">
+              <MainComponent v-for="(series,index) in store.seriesList" :key="series.id"
+              :tvSeriesImg="'https://image.tmdb.org/t/p/w342'+series.poster_path"
+              :tvSeriesTitle="series.name"
+              :tvSeriesRealTitle="series.original_name"
+              :tvSeriesLanguage="series.original_language"
+              :tvSeriesVote="series.vote_average"/>
+          </div>
       </div>
     </div>  
 </template>
