@@ -13,7 +13,7 @@
                   :vote="movie.vote_average"
                   />
               </div>
-              <h1 class="text-light">Series</h1>
+              <h1 class="text-light py-5">Series</h1>
               <div class="row">
                   <MainComponent v-for="(series,index) in store.seriesList" :key="series.id"
                   :image="'https://image.tmdb.org/t/p/w342'+series.poster_path"

@@ -5,7 +5,7 @@
                 <h3 class="px-5 py-2 logo">{{ title }}</h3>
                 <h5>{{ realTitle }}</h5>
                 <img :src="languageFlags()" alt="" class="flags">
-                <p>{{ vote }}</p>
+                <p class="fs-6 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                 <img :src="flag" alt="" class="w-100">
             </div>    
         </div>             
