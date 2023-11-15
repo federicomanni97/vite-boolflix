@@ -1,28 +1,30 @@
 <template>
+  <body>  
     <HeaderComponent/>
-    <div class="bg-container">
-      <div class="container">
-        <h1 class="text-light py-5">Movies</h1>
-          <div class="row">
-              <MainComponent v-for="(movie,index) in store.movieList" :key="movie.id"
-              :image="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
-              :title="movie.title"
-              :realTitle="movie.original_title"
-              :language="movie.original_language"
-              :vote="movie.vote_average"
-              />
+        <div class="bg-container">
+          <div class="container">
+            <h1 class="text-light py-5">Movies</h1>
+              <div class="row">
+                  <MainComponent v-for="(movie,index) in store.movieList" :key="movie.id"
+                  :image="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
+                  :title="movie.title"
+                  :realTitle="movie.original_title"
+                  :language="movie.original_language"
+                  :vote="movie.vote_average"
+                  />
+              </div>
+              <h1 class="text-light">Series</h1>
+              <div class="row">
+                  <MainComponent v-for="(series,index) in store.seriesList" :key="series.id"
+                  :image="'https://image.tmdb.org/t/p/w342'+series.poster_path"
+                  :title="series.name"
+                  :realTitle="series.original_name"
+                  :language="series.original_language"
+                  :vote="series.vote_average"/>
+              </div>
           </div>
-          <h1 class="text-light">Series</h1>
-          <div class="row">
-              <MainComponent v-for="(series,index) in store.seriesList" :key="series.id"
-              :image="'https://image.tmdb.org/t/p/w342'+series.poster_path"
-              :title="series.name"
-              :realTitle="series.original_name"
-              :language="series.original_language"
-              :vote="series.vote_average"/>
-          </div>
-      </div>
-    </div>  
+        </div>  
+   </body>  
 </template>
 
 <script>

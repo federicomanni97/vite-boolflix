@@ -2,8 +2,8 @@
         <div class="col-3">
             <img :src="image" class="w-100" alt="">
             <div class="fs-4 text-center text-light pt-2">
-                <h3>{{ title }}</h3>
-                <h6>{{ realTitle }}</h6>
+                <h3 class="px-5 py-2 logo">{{ title }}</h3>
+                <h5>{{ realTitle }}</h5>
                 <img :src="languageFlags()" alt="" class="flags">
                 <p>{{ vote }}</p>
                 <img :src="flag" alt="" class="w-100">
