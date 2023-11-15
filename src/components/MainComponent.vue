@@ -49,5 +49,4 @@ export default {
     .flags{
         width: 30px;
     }
-
 </style>
