@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <h1>ciao</h1>
   </div>
 </template>
 
@@ -11,21 +11,20 @@ export default {
   name: "App",
   data(){
     
-
     return {
       store,
     };
   },
   methods:{
-    get(){
+    getApi(){
       axios.get(store.apiUrl).then((res) =>{
         console.log(res.data);
       })
     }
   },
-  created(){
-    this.getApi();
-  }
+  // created(){
+  //   this.getApi();
+  // }
 }
 </script>
 
