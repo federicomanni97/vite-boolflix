@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-dark d-flex justify-content-between p-3">
-        <h1 class="text-uppercase text-danger">Boolflix</h1>
+    <div class="bg-dark d-flex justify-content-between align-items-center p-4">
+        <h1 class="text-uppercase text-danger fs-2 m-0">Boolflix</h1>
         <div class="input-group w-25 p-2">
              <span class="input-group-text" id="basic-addon1" @click="searchBar()">
                 <i class="fa-solid fa-magnifying-glass"></i>

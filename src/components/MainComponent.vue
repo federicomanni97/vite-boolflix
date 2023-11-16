@@ -1,14 +1,18 @@
 <template>
-        <div class="col-3">
-            <img :src="image" class="w-100" alt="">
-            <div class="fs-4 text-center text-light pt-2">
-                <h3 class="px-5 py-2 logo">{{ title }}</h3>
-                <h5>{{ realTitle }}</h5>
+    <div class="col-3 flip-card px-4 py-5">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">  
+                <img :src="image" class="w-100 shadow-lg p-1 bg-light" alt="">
+            </div>       
+            <div class="flip-card-back shadow-lg overflow-y-auto scrollbarhidden"> 
+                <h3 class="px-5 py-5 logo">{{ title }}</h3>
+                <h5 class="p-3">{{ realTitle }}</h5>
                 <img :src="languageFlags()" alt="" class="flags">
-                <p class="fs-6 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
-                <img :src="flag" alt="" class="w-100">
-            </div>    
-        </div>             
+                <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                <span  class="p-3 movietrama">{{ overview }}</span>
+            </div>
+        </div> 
+    </div>             
 </template>
 <script>
 import {store} from '../data/store'
@@ -21,6 +25,7 @@ export default {
         language: String,
         vote: Number,
         flag: String,
+        overview: String
     },
     data() {
         return {
@@ -49,4 +54,48 @@ export default {
     .flags{
         width: 30px;
     }
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;  
+  text-align: center;
+  transition: transform 0.9s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  color: black;
+}
+
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  background-color: #434343;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.movietrama{
+    font-size: 18px;
+}
+
+.scrollbarhidden::-webkit-scrollbar {
+  display: none;
+}
+
 </style>
