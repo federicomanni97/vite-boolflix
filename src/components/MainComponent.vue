@@ -1,15 +1,15 @@
 <template>
-    <div class="col-3 flip-card px-4 py-5">
-        <div class="flip-card-inner">
+    <div class="col-3 flip-card p-4">
+        <div class="flip-card-inner h-100">
             <div class="flip-card-front">  
-                <img :src="image" class="w-100 shadow-lg p-1 bg-light" alt="">
+                <img :src="NotFoundImg()" class="h-100 w-100 shadow-lg object-fit-cover" alt="">
             </div>       
-            <div class="flip-card-back shadow-lg overflow-y-auto scrollbarhidden"> 
-                <h3 class="px-5 py-5 logo">{{ title }}</h3>
+            <div class="flip-card-back text-center shadow-lg overflow-y-auto scrollbarhidden"> 
+                <h3 class="px-5 py-3 logo">{{ title }}</h3>
                 <h5 class="p-3">{{ realTitle }}</h5>
                 <img :src="languageFlags()" alt="" class="flags">
                 <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
-                <span  class="p-3 movietrama">{{ overview }}</span>
+                <span  class="text-center p-1 movietrama">{{ overview }}</span>
             </div>
         </div> 
     </div>             
@@ -45,7 +45,15 @@ export default {
             } else if (this.language === 'ja'){
                 return this.store.flags.ja
             }
+        },
+        NotFoundImg(){
+            if (this.image){
+                return store.imgInitLink + this.image
+            } else {
+                return '/images/404-not-found.jpg'
+            }
         }
+        
     },
 }
 </script>

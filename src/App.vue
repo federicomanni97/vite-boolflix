@@ -6,7 +6,7 @@
             <h1 class="text-light pt-5 px-3">Movies</h1>
               <div class="row">
                   <MainComponent v-for="(movie,index) in store.movieList" :key="movie.id"
-                  :image="'https://image.tmdb.org/t/p/w342'+movie.poster_path"
+                  :image="movie.poster_path"
                   :title="movie.title"
                   :realTitle="movie.original_title"
                   :language="movie.original_language"
@@ -17,7 +17,7 @@
               <h1 class="text-light pt-5 px-3">Series</h1>
               <div class="row">
                   <MainComponent v-for="(series,index) in store.seriesList" :key="series.id"
-                  :image="'https://image.tmdb.org/t/p/w342'+series.poster_path"
+                  :image="series.poster_path"
                   :title="series.name"
                   :realTitle="series.original_name"
                   :language="series.original_language"
@@ -60,9 +60,17 @@ export default {
         this.store.seriesList = res.data.results;
       })
     },
+    getActors(){
+      const actorsList = this.store.apiUrl + store.endPoint.actors;
+      axios.get(actorsList, {params:this.store.params2}).then((res) =>{
+      this.store.actorsList = res.data.results;
+      console.log(res.data.cast);
+      })
+    }
   },
   created(){
     this.getMoviesAndSeries();
+    this.getActors();
   }
 }
 </script>
