@@ -4,8 +4,9 @@ export const store = reactive({
     endPoint: {
         movies: 'search/movie',
         series: 'search/tv',
-        actors: 'movie/49051/credits',
+        actors: 'movie/',
     },
+    // 49051/credits
     params: {
         api_key: '47b80f2baf52ebe987f1bbb273201ac5',
         query: 'Hobbit',

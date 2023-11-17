@@ -12,6 +12,7 @@
                   :language="movie.original_language"
                   :vote="movie.vote_average"
                   :overview="movie.overview"
+                  @mouseenter="getActors(movie.id)"
                   />
               </div>
               <h1 class="text-light pt-5 px-3">Series</h1>
@@ -27,7 +28,7 @@
               </div>
           </div>
         </div>  
-   </body>  
+  </body>  
 </template>
 
 <script>
@@ -56,15 +57,18 @@ export default {
       })
       const seriesUrl = this.store.apiUrl + this.store.endPoint.series;
       axios.get(seriesUrl, {params: this.store.params}).then((res) =>{
-        console.log(res.data.results);
-        this.store.seriesList = res.data.results;
+      this.store.seriesList = res.data.results;
       })
     },
-    getActors(){
-      const actorsList = this.store.apiUrl + store.endPoint.actors;
+    getActors(actorId){
+      store.actorsList = []
+      const actorsList = this.store.apiUrl + store.endPoint.actors + actorId + '/credits';
       axios.get(actorsList, {params:this.store.params2}).then((res) =>{
-      this.store.actorsList = res.data.results;
-      console.log(res.data.cast);
+        for (let i = 0; i < 5; i++) {
+          if (res.data.cast[i]) {
+            store.actorsList.push(res.data.cast[i].name)
+          }
+        }
       })
     }
   },

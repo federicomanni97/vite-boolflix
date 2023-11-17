@@ -10,6 +10,7 @@
                 <img :src="languageFlags()" alt="" class="flags">
                 <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                 <span  class="text-center p-1 movietrama">{{ overview }}</span>
+                <p v-for="credits in store.actorsList">{{ credits }}</p>
             </div>
         </div> 
     </div>             
