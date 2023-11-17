@@ -1,29 +1,33 @@
 <template>
-    <div class="col-3 flip-card p-4">
-        <div class="flip-card-inner h-100">
-            <div class="flip-card-front">  
-                <img :src="NotFoundImg()" class="h-100 w-100 shadow-lg object-fit-cover" alt="">
-            </div>       
-            <div class="flip-card-back text-center shadow-lg overflow-y-auto scrollbarhidden"> 
-                <h3 class="px-5 py-3 logo">{{ title }}</h3>
-                <h5 class="p-3">{{ realTitle }}</h5>
-                <img :src="languageFlags()" alt="" class="flags">
-                <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
-                <span  class="text-center p-1 movietrama">{{ overview }}</span>
-                <p v-for="credits in store.actorsList">{{ credits }}</p>
-                <div class="py-3">
-                    <button class="btn btn-primary" @click="overviewCards()">Click me</button>
+    <div class="col-3">
+        <div class="flip-card p-4">
+            <div class="flip-card-inner h-100">
+                <div class="flip-card-front">  
+                    <img :src="NotFoundImg()" class="h-100 w-100 shadow-lg object-fit-cover" alt="">
+                </div>       
+                <div class="flip-card-back text-center shadow-lg overflow-y-auto scrollbarhidden"> 
+                    <h3 class="px-5 py-4 logo">{{ title }}</h3>
+                    <h5 class="p-2">{{ realTitle }}</h5>
+                    <img :src="languageFlags()" alt="" class="flags">
+                    <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                    <span  class="text-center p-1 movietrama">{{ overview }}</span>
+                    <p v-for="credits in store.actorsList">{{ credits }}</p>
+                    <div class="py-3">
+                        <button class="btn btn-secondary opacity-50" @click="overviewCards()">Click me</button>
+                    </div>
                 </div>
+            </div> 
+        </div>  
+        <div v-if="overviewAppear" @click="overviewDisappear()" class="fixedschedule d-flex justify-content-center align-items-center">
+            <div class="w-50 rounded-2 bg-secondary text-light p-4">
+                <div>Image</div>
+                <h2>{{title}}</h2>
+                <h5>{{realTitle}}</h5>
+                <p class="fs-4 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                <span class="text-center movietrama">{{ overview }}</span>
+                <div>Cast</div>
             </div>
-        </div> 
-    </div>  
-    <div v-if="flag" class="fixedschedule h-50 w-75 rounded-2 bg-secondary text-light opacity-25 p-4">
-        <div>Image</div>
-        <h1>Title</h1>
-        <h3>Real title</h3>
-        <span>Stars</span>
-        <div>Cast</div>
-        <div>overview</div>
+        </div>
     </div>        
 </template>
 <script>
@@ -42,7 +46,7 @@ export default {
     data() {
         return {
             store,
-            flag: false
+            overviewAppear: false
         }
     },
     methods:{
@@ -67,8 +71,14 @@ export default {
             }
         },
         overviewCards(){
-            if (!this.flag){
-                this.flag = true
+            if (!this.overviewAppear){
+                this.overviewAppear = true
+                return
+            }
+        },
+        overviewDisappear(){
+            if (this.overviewAppear) {
+                this.overviewAppear = false
                 return
             }
         }
@@ -126,10 +136,12 @@ export default {
 
 .fixedschedule{
     position: fixed;
-    top: 40;
-    bottom: 40;
-    right: 40;
-    left: 40;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.8);
 }
 
 </style>

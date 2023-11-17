@@ -30,7 +30,6 @@
         </div>  
   </body>  
 </template>
-<!-- @mouseenter="getActors(movie.id)" -->
 <script>
 import MainComponent from './components/MainComponent.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
@@ -63,7 +62,7 @@ export default {
     getActors(actorId){
       store.actorsList = []
       const actorsList = this.store.apiUrl + store.endPoint.actors + actorId + '/credits';
-      axios.get(actorsList, {params:this.store.params2}).then((res) =>{
+      axios.get(actorsList, {params2:this.store.params2}).then((res) =>{
         for (let i = 0; i < 5; i++) {
           if (res.data.cast[i]) {
             store.actorsList.push(res.data.cast[i].name)
@@ -74,7 +73,6 @@ export default {
   },
   created(){
     this.getMoviesAndSeries();
-    this.getActors();
   }
 }
 </script>
