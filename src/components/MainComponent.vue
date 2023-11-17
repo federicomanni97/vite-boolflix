@@ -1,8 +1,8 @@
 <template>
     <div class="col-3">
-        <div class="flip-card p-4">
-            <div class="flip-card-inner h-100">
-                <div class="flip-card-front">  
+        <div class="flip-card p-4 h-100 w-100">
+            <div class="flip-card-inner w-100 h-100">
+                <div class="flip-card-front ">  
                     <img :src="NotFoundImg()" class="h-100 w-100 shadow-lg object-fit-cover" alt="">
                 </div>       
                 <div class="flip-card-back text-center shadow-lg overflow-y-auto scrollbarhidden"> 
@@ -11,21 +11,27 @@
                     <img :src="languageFlags()" alt="" class="flags">
                     <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                     <span  class="text-center p-1 movietrama">{{ overview }}</span>
-                    <p v-for="credits in store.actorsList">{{ credits }}</p>
                     <div class="py-3">
-                        <button class="btn btn-secondary opacity-50" @click="overviewCards()">Click me</button>
+                        <button class="btn btn-secondary opacity-50" @click="overviewCards()">Details</button>
                     </div>
                 </div>
             </div> 
         </div>  
         <div v-if="overviewAppear" @click="overviewDisappear()" class="fixedschedule d-flex justify-content-center align-items-center">
-            <div class="w-50 rounded-2 bg-secondary text-light p-4">
-                <img class="w-100" :src="backdropImage" alt="">
-                <h2>{{title}}</h2>
-                <h5>{{realTitle}}</h5>
-                <p class="fs-4 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
-                <span class="text-center movietrama">{{ overview }}</span>
-                <div>Cast</div>
+            <div class="w-50 rounded-4 bg-secondary text-light">
+                <img class="rounded-4 w-100" :src="backdropImage" alt="">
+                <div class="p-4">
+                    <h1>{{title}}</h1>
+                    <h5>{{realTitle}}</h5>
+                    <div>
+                        <ul class="d-flex list-unstyled ">
+                            <li class="rounded-5 mx-1 p-2 bg-dark" v-for="credits in store.actorsList">{{ credits }}</li>
+                        </ul>
+                    </div>
+                    <p class="fs-4 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                    <span class="text-center movietrama">{{ overview }}</span>
+                    
+                </div>
             </div>
         </div>
     </div>        

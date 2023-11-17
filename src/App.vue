@@ -13,7 +13,7 @@
                   :vote="movie.vote_average"
                   :overview="movie.overview"
                   :backdropImage="store.imgBackdrop+movie.backdrop_path"
-                  />
+                  @click="getActors(movie.id)"/>
               </div>
               <h1 class="text-light pt-5 px-3">Series</h1>
               <div class="row">
@@ -24,6 +24,8 @@
                   :language="series.original_language"
                   :vote="series.vote_average"
                   :overview="series.overview"
+                  :backdropImage="store.imgBackdrop+series.backdrop_path"
+                  @click="getActors(series.id)"
                   />
               </div>
           </div>
@@ -62,7 +64,7 @@ export default {
     getActors(actorId){
       store.actorsList = []
       const actorsList = this.store.apiUrl + store.endPoint.actors + actorId + '/credits';
-      axios.get(actorsList, {params2:this.store.params2}).then((res) =>{
+      axios.get(actorsList, {params:this.store.params2}).then((res) =>{
         for (let i = 0; i < 5; i++) {
           if (res.data.cast[i]) {
             store.actorsList.push(res.data.cast[i].name)
