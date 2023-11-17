@@ -11,10 +11,13 @@
                 <p class="fs-6 text-warning p-3"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                 <span  class="text-center p-1 movietrama">{{ overview }}</span>
                 <p v-for="credits in store.actorsList">{{ credits }}</p>
+                <div class="py-3">
+                    <button class="btn btn-primary" @click="overviewCards()">Click me</button>
+                </div>
             </div>
         </div> 
     </div>  
-    <div class="fixedschedule h-50 w-75 rounded-2 bg-secondary text-light opacity-25 p-4">
+    <div v-if="flag" class="fixedschedule h-50 w-75 rounded-2 bg-secondary text-light opacity-25 p-4">
         <div>Image</div>
         <h1>Title</h1>
         <h3>Real title</h3>
@@ -38,7 +41,8 @@ export default {
     },
     data() {
         return {
-            store
+            store,
+            flag: false
         }
     },
     methods:{
@@ -61,8 +65,13 @@ export default {
             } else {
                 return '/images/404-not-found.jpg'
             }
+        },
+        overviewCards(){
+            if (!this.flag){
+                this.flag = true
+                return
+            }
         }
-        
     },
 }
 </script>
