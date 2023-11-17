@@ -26,5 +26,6 @@ export const store = reactive({
         esp: '/images/spain-flag.jpg',
         ja: '/images/ja-flag.jpg'
     },
-    imgInitLink: 'https://image.tmdb.org/t/p/w342'
+    imgInitLink: 'https://image.tmdb.org/t/p/w342',
+    imgBackdrop: 'https://image.tmdb.org/t/p/original'
 })

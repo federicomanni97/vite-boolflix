@@ -20,7 +20,7 @@
         </div>  
         <div v-if="overviewAppear" @click="overviewDisappear()" class="fixedschedule d-flex justify-content-center align-items-center">
             <div class="w-50 rounded-2 bg-secondary text-light p-4">
-                <div>Image</div>
+                <img class="w-100" :src="backdropImage" alt="">
                 <h2>{{title}}</h2>
                 <h5>{{realTitle}}</h5>
                 <p class="fs-4 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
@@ -41,7 +41,8 @@ export default {
         language: String,
         vote: Number,
         flag: String,
-        overview: String
+        overview: String,
+        backdropImage: String
     },
     data() {
         return {
