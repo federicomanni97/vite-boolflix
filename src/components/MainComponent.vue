@@ -13,7 +13,15 @@
                 <p v-for="credits in store.actorsList">{{ credits }}</p>
             </div>
         </div> 
-    </div>             
+    </div>  
+    <div class="fixedschedule h-50 w-75 rounded-2 bg-secondary text-light opacity-25 p-4">
+        <div>Image</div>
+        <h1>Title</h1>
+        <h3>Real title</h3>
+        <span>Stars</span>
+        <div>Cast</div>
+        <div>overview</div>
+    </div>        
 </template>
 <script>
 import {store} from '../data/store'
@@ -105,6 +113,14 @@ export default {
 
 .scrollbarhidden::-webkit-scrollbar {
   display: none;
+}
+
+.fixedschedule{
+    position: fixed;
+    top: 40;
+    bottom: 40;
+    right: 40;
+    left: 40;
 }
 
 </style>

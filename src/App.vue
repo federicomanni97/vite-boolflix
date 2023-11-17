@@ -12,7 +12,7 @@
                   :language="movie.original_language"
                   :vote="movie.vote_average"
                   :overview="movie.overview"
-                  @mouseenter="getActors(movie.id)"
+                  
                   />
               </div>
               <h1 class="text-light pt-5 px-3">Series</h1>
@@ -30,7 +30,7 @@
         </div>  
   </body>  
 </template>
-
+<!-- @mouseenter="getActors(movie.id)" -->
 <script>
 import MainComponent from './components/MainComponent.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
