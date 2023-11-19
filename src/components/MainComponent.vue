@@ -24,14 +24,19 @@
                     <h1>{{title}}</h1>
                     <h5>{{realTitle}}</h5>
                     <div>
+                        <ul class="d-flex list-unstyled">
+                            <li v-for="genres in store.genresList" class="bg-primary rounded-5 mx-1 p-2">{{ genres }}</li>
+                        </ul>
+                     </div>
+                    <div>
                         <ul class="d-flex list-unstyled ">
                             <li class="rounded-5 mx-1 p-2 bg-dark" v-for="credits in store.actorsList">{{ credits }}</li>
                         </ul>
                     </div>
                     <p class="fs-4 text-warning"><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                     <span class="text-center movietrama">{{ overview }}</span>
-                    
                 </div>
+                
             </div>
         </div>
     </div>        

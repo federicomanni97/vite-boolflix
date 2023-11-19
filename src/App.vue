@@ -13,7 +13,7 @@
                   :vote="movie.vote_average"
                   :overview="movie.overview"
                   :backdropImage="store.imgBackdrop+movie.backdrop_path"
-                  @click="getActors(movie.id)"/>
+                  @click="getActors(movie.id), getGenre(movie.id)"/>
               </div>
               <h1 class="text-light pt-5 px-3">Series</h1>
               <div class="row">
@@ -25,8 +25,8 @@
                   :vote="series.vote_average"
                   :overview="series.overview"
                   :backdropImage="store.imgBackdrop+series.backdrop_path"
-                  @click="getActors(series.id)"
-                  />
+                  @click="seriesActors(series.id), seriesGenre(series.id)"
+                  />          
               </div>
           </div>
         </div>  
@@ -70,6 +70,36 @@ export default {
             store.actorsList.push(res.data.cast[i].name)
           }
         }
+      })
+    },
+    seriesActors(actorId){
+      store.actorsList = []
+      const actorsList = this.store.apiUrl + store.endPoint.seriesStuff + actorId + '/credits';
+      axios.get(actorsList, {params:this.store.params2}).then((res) =>{
+        for (let i = 0; i < 5; i++) {
+          if (res.data.cast[i]) {
+            store.actorsList.push(res.data.cast[i].name)
+          }
+        }
+      })
+    },
+    getGenre(actorId){
+      store.genresList = []
+      const genresList = this.store.apiUrl + store.endPoint.actors + actorId;
+      axios.get(genresList, {params:this.store.params2}).then((res)=>{
+        res.data.genres.forEach(element => {
+          store.genresList.push(element.name)          
+        });
+      })
+    },
+    seriesGenre(actorId){
+      store.genresList = []
+      const genresList = this.store.apiUrl + store.endPoint.seriesStuff + actorId;
+      axios.get(genresList, {params:this.store.params2}).then((res) =>{
+      res.data.genres.forEach(element => {
+        store.genresList.push(element.name)
+        console.log(store.genresList);
+      });
       })
     }
   },
